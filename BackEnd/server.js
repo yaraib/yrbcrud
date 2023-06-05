@@ -51,7 +51,7 @@ if(id!=0 && del!=0 && upd==0 && ins==0 && srch==0){
   
 
   //INSERT
-  if (oiname!= 0 && oiage!= 0 && oiname!= '' && oiage!= '' && oiname!=' ' && oiage!=' ' && del == 0 && ins==1 && upd==0 && srch==0 )
+  if (oiname!= 0 && oiage!= 0 && oiname!= '' && oiage!= '' && oiname!=' ' && oiage!=' '  && del == 0 && ins==1 && upd==0 && srch==0 )
     var sql0 = `insert into labtbl6 (fname,age)values(${uinameesq},${oiage})`;
   else var sql0 = "SELECT * FROM labtbl6";
 
@@ -60,7 +60,7 @@ if(id!=0 && del!=0 && upd==0 && ins==0 && srch==0){
   });
   
  //UPDATE
-if(id!=0 && fnameesq!=0 && fnameesq!='' && fnameesq!='undefined' && age!=0 && age!='undefined' && del==0 && upd==1 && ins==0 && srch==0)
+if(id!=0 && fnameesq!=0 && fnameesq!='' && fnameesq!='undefined' && age!=0 && age!=undefined && del==0 && upd==1 && ins==0 && srch==0)
 var sql10=`update labtbl6 set fname=${fnameesq}, age=${age} where id=${id}`;
 else
 var sql10=`SELECT * FROM labtbl6`;
@@ -70,12 +70,12 @@ con.query(sql10, function (err, data, fields) {
 });
 
 //SEARCH
-if(oiname!=0 && oiage!='' && oiname!=' ' && oiage!=' ' && (oiname!='undefined' || oiage!='undefined') && del==0 && upd==0 && ins==0 && srch==1)
+if(oiname!=0 && oiage!='' && oiname!=' ' && oiage!=' ' && (oiname!='undefined' || oiage!=undefined) && del==0 && upd==0 && ins==0 && srch==1)
 {
   if(oiname!='undefined' && oiage=='undefined')
-var sqls=`select * from labtbl6 where fname=${uinameesq}`;
+var sqls=`select * from labtbl6 where fname LIKE ${mysql.escape(`%${oiname}%`)}`;
 if(oiname!='undefined' && oiage!='undefined')
-var sqls=`select * from labtbl6 where fname=${uinameesq} OR age=${oiage}`;
+var sqls=`select * from labtbl6 where fname LIKE ${mysql.escape(`%${oiname}%`)} OR age=${oiage}`;
 if(oiname=='undefined' && oiage!='undefined')
 var sqls=`select * from labtbl6 where age=${oiage}`;
 

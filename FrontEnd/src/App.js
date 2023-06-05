@@ -36,7 +36,7 @@ export default function App() {
     uiage('');
         uiname('');
 
-        if(oiname!='' && oiage!='' && oiname!='undefined' && oiage!='undefined' && oiname!=' ' && oiage!=' ' )
+        if(oiname!='' && oiage!='' && oiname!='undefined' && oiage!=undefined && oiname!=' ' && oiage!=' ' )
         fetchData();
     
    
@@ -49,8 +49,8 @@ export default function App() {
     insrt=0;
     upd=0;
     del=0;
-    uiage('');
-        uiname('');
+    // uiage('');
+    //     uiname('');
 
         // if(oiname!='' && oiage!='' && oiname!=undefined && oiage!=undefined )
         fetchData();
