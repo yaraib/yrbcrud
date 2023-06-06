@@ -76,6 +76,7 @@ export default function App() {
     idc=id;
     age2=age;
     fetchData();
+    alert('Updated');
     
   }
 
@@ -115,23 +116,18 @@ export default function App() {
       )
       .then((res) => {
         setNews(res.data.userData);
-        
-
+        // if(res.data.yr!='undefined')
+        if(res.data.msg==1)
+        alert('Cannot add duplicate value');
         console.log(news);
 
         
 
       });
-    // .catch((err) => {
-    //   console.log(err);
-    // });
+  
   };
 
-  // if(oiage=='')
-  //  uiage=0;
-  //  if(oiname=='')
-  //  uiname=0;
-   
+  
 
   return (
     
